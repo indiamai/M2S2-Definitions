@@ -1,0 +1,249 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{M2S2 Definitions}
+\author{India Marsden }
+\date{March 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+
+\maketitle
+\section*{List of Definitions}
+\begin{enumerate}
+    \item Statistical Model
+    \item Parameter space
+    \item Random Sample
+    \item Covariates
+    \item Statistic
+    \item Estimate
+    \item Estimator
+    \item Asymptotically normal
+    \item MLE 
+    \item Confidence Interval
+    \item SOA
+    \item NTA
+    \item Vector of fitted values
+    \item Multivariate normal distribution
+    \item Properties of multivariate normal
+    \item Chi squared dist
+    \item T Distribution
+    \item Fisher information
+    \item Fisher information for a sample 
+    \item Linear Estimator
+    \setcounter{enumi}{10}
+    \item Linear model
+    \item Likelihood ratio test statistic
+    \item Bias
+    \item Consistent
+    \item Residual sum of squares
+    \item MSE
+    \item Asymptotic Confidence Interval
+    \item Asympototically unbiased
+    \item Pivotal Quantity
+    \item Sum of Normals distribution.
+    \item F distribution
+    \item Projection Matrix
+    \item Unbiased
+    \item Covariance
+    \item Vector of residuals
+    \item FR
+\end{enumerate}
+
+\section{Statistical Inference}
+\textbf{Statistical Model}
+A specification of the distribution of Y up to an unknown parameter $\theta$ 
+\\
+\\
+\textbf{Parameter space}
+The set $\Theta$ of all possible parameters
+\\
+\\
+\textbf{Random sample}
+A set of independent and identically distributed random variables.
+\\
+\\
+\textbf{Covariates}
+Non random or deterministic quantities that the distribution of $Y_1 ... Y_n$ depends on.
+\\
+\\
+\textbf{Statistic}
+A function of observable random variables.
+\\
+\\
+\textbf{Estimate}
+The value of a particular statistic with an observed sample.
+\\
+\\
+\textbf{Estimator}
+The random variable version of an estimate.
+\\
+\\
+\textbf{Bias}
+ Let T be an estimator for $ \theta \in \Theta \subset \mathbb{R} $. The bias of T is defined by $$bias_\theta(T) = E_\theta(T) - \theta$$
+ \\
+\textbf{Unbiased}
+ We say that T is unbiased for $\theta$, if: $$\forall \theta \in \Theta: bias_\theta(T)=0$$ \\
+\textbf{MSE}
+Let T be an estimator for $ \theta \in \Theta \subset \mathbb{R} $. The mean squared error of T is defined as:
+$$MSE_\theta(T) = E_\theta(T - \theta)^2$$
+\\
+\textbf{Consistent}
+A sequence of estimators $(T_n)_{n \in \mathbb{N}}$ for $g(\theta)$ is called (weakly) consistent if $$\forall \theta \in \Theta: T_n \overset{P_\theta}{\to }
+ g(\theta) \hspace{5pt}(n \to \infty)$$
+\\
+\textbf{Asymptotically unbiased}
+A sequence of estimators $(T_n)_{n \in \mathbb{N}}$ for $g(\theta)$ is called asymptotically unbiased if $$\forall \theta \in \Theta:
+E_\theta(T_n) \to g(\theta) \hspace{5pt}(n \to \infty)$$
+\\
+\textbf{Asymptotically normal}
+A sequence $T_n$ of estimators for $\theta \in \mathbb{R}$ is called asymptotically normal if $$\sqrt{n}(T_n - \theta)\overset{d}{\to} N(0,\sigma^2(\theta))$$
+for some $\sigma^2(\theta)$.
+\\
+\textbf{MLE}
+A maximum likelihood estimator (MLE) of $\theta$ is an estimator $\hat{\theta}$ s.t. $$L(\hat{\theta}) = \underset{\theta \in \Theta}{\sup} \hspace{2pt} L(\theta).$$
+\\
+\textbf{Confidence Interval}
+A $1 - \alpha$ confidence interval for $\theta$ is a random interval I that contains the ’true’ parameter
+with probability $\geq 1 - \alpha$, i.e.
+$$P_\theta(\theta \in I) \geq 1 - \alpha \hspace{10pt} \forall \theta \in \Theta$$
+\\
+\textbf{Pivotal Quantity}
+ A pivotal quantity for $\theta$ is a function $t(Y, \theta)$ of the data and $\theta$ s.t. the distribution of $t(Y, \theta)$ is known.
+ \\
+ \\
+ \textbf{Expected Fisher information}
+ $$
+ I_f (\theta) = E_\theta [ (\frac{\delta}{\delta \theta} log f_\theta (X))^2]
+ $$
+ or equivalently:
+ $$
+  I_f(\theta) = - E_\theta [(\frac{\delta}{\delta \theta})^2 log f_\theta (X) ]
+ $$
+ \\
+ \textbf{Fisher information for a sample} \\
+ Suppose a random sample is observed: $X = (X_1, X_2, \dots X_n)$ iid and so $f_\theta (x) = \prod_{i=1}^n f_\theta^{(1)} (x_i)$ where $f_\theta^{(1)} (x)$ is the pmf of a single observation. Then we have:
+ $$
+ I_f (\theta) = nI_{f_\theta^{(1)}} (\theta)
+ $$
+ Proof concept:
+ \begin{itemize}
+     \item Write $f_\theta (x)$ for the sample as the product of the individual observations
+     \item Plug in to definition of FI and move the sum outside
+ \end{itemize}
+ \\
+ \textbf{Asymptotic Confidence Interval}
+ A sequence of random intervals In is called an asymptotic $(1 - \alpha)$ CI for $\theta$ if
+$$\underset{n \to \infty}{\lim} P_\theta(\theta \in I_n)\geq 1 - \alpha \forall \theta. $$
+\\
+\textbf{Likelihood ratio test statistic}
+Suppose we observe the data y. The likelihood ratio test statistic is $$t(y) = \frac{\sup \theta \in \Theta L(\theta; y)}{\sup \theta \in \Theta_0 L(\theta; y)} = \frac{\text{max. lik. under }H_0 + H_1}{\text{ max. lik. under } H_0} $$
+\\
+\textbf{Sum of Normals has Chi-Squared Distribution}
+Let $X_1, X_2, ... , X_n \sim N(0, 1)$ independently. Then $$\sum^n_{i=1} X_i^2 \sim \chi^2_n$$.
+\section{Linear Models with Second Order Assumptions
+}
+\textbf{Covariance}
+If X, Y are random vectors then 
+\begin{align*}
+    \text{cov}(X, Y) &:=(\text{cov}(X_i , Y_j ))_{i ,j}
+    \\
+&= E \bigg [(X - E(X))(Y - E(Y))^T \bigg ] = E \big [XY^T \big ] - E(X) E(Y)^T .
+\end{align*}
+\\
+\textbf{Linear Model}
+$$
+Y = X \beta + \epsilon
+$$
+where
+Y is an n-dimensional random vector (observable),\\
+$X \in \mathbb{R}^{n \times p}$ is a known matrix (often called “design matrix”), \\
+$\beta \in \mathbb{R}^p$ is an unknown parameter and\\
+$\epsilon$ is an n-variate random vector (not observable) with $E(\epsilon) = 0$.
+\\
+\\
+\textbf{Second Order Assumptions}
+$$ \text{cov}(\epsilon) = (\text{cov}(\epsilon_i,\epsilon_j))_{\underset{i=1,...,n}{ j = 1,...,n}}  = \sigma^2 I_n \hspace{6pt} \text{for some }\sigma^2 > 0.$$
+ie the errors of two different observations, $\epsilon_i$ and $\epsilon_j$ for $i \ne j$ are uncorrelated. Second, that the variance of all errors is identical (recall: $\text{Var}(\epsilon_i ) = \text{cov}(\epsilon_i,\epsilon_i)$).
+\\
+\\
+\textbf{Full rank} The matrix has full rank, ie the highest order for its dimensions.
+\\
+\\
+\textbf{Normal theory assumptions }
+$$ \epsilon \sim N(0, \sigma^2 I_n) \text{ for some } \sigma^2 > 0.$$
+N denotes the n-dimensional multivariate normal distribution. One could equivalently define the
+NTA as:$ \epsilon_1,...,\epsilon_n \sim N(0, \sigma^2)$ independently.
+\\
+\\
+\textbf{Projection Matrix}
+$P \in \mathbb{R}^{n \times n}$
+L, if:
+\begin{align*}
+    &1.Px=x \hspace{5pt} \forall x \in L
+    \\
+    &2.Px=0 \hspace{5pt}\forall x \in L^\perp = \{ z \in \mathbb{R}^n :z^Ty= 0 \hspace{5pt}\forall y \in L \}
+\end{align*}
+\\
+\textbf{Linear Estimator}
+An estimator $\hat{\gamma}$ is called linear if there exists $L \in \mathbb{R}^n$ such that $\hat{\gamma} = L^TY.$
+\\
+\\
+\textbf{Vector of fitted values} The vector of fitted values ($\hat{Y}$) is defined by:
+$$\hat{Y} = X \hat{\beta}$$where $\hat{\beta}$ is a least squares estimator, is called the vector of fitted values. In the full rank case, $\hat{Y} = X(X^TX)^{-1}X^TY$.
+\\
+\\
+\textbf{Vector of residuals} The vector is residuals is defined to be
+$e = Y - \hat{Y}$ 
+\\
+\\
+\textbf{Resisdual sum of squares} RSS = $e^T e$ is called the residual sum of squares. \\
+Other forms:
+\begin{align*}
+    RSS &= \sum_{i=1}^n e_i^2\\
+    RSS &= \Vert Y - X\hat{\beta}\Vert^2 \\
+    RSS &= (QY)^TQY = Y^TQ^TQY = Y^TQY \\
+    RSS &= Y^TY - \hat{Y}^T\hat{Y}
+\end{align*}
+\\
+\textbf{Multivariate Normal Distribution}
+$$
+f(y) = \frac{1}{(\sqrt{2\pi})^n|\Sigma|^{\frac{1}{2}}} \exp \big ( -\frac{1}{2}(z - \mu)^T\Sigma^{-1}(z - \mu) \big )
+$$ where $|\Sigma |$ denotes the determinant of $\Sigma$.
+\\
+\\
+\textbf{Properties of multivariate normal} \\
+An n-variate random vector Z follows a multivariate normal distribution if for all $ a \in \mathbb{R}^n $ the random variable $ a^T Z $ follows a univariate normal distribution. \\
+Let $X_1,...X_r \sim N(0,1)$ be iid,let $\mu \in \mathbb{R}^n \text{ and } A \in \mathbb{R}^{n \times r}$. Then $Z = AX+ \mu \sim N(\mu,AA^T) $. \\
+$Z \sim N (\mu, \Sigma)$ if its characteristic function $\varphi: \mathbb{R}^n \to \mathbb{C}, \varphi(t) = E(\exp(i Z^T t))$ satisfies $$\varphi(t) = \exp (i\mu^Tt - \frac{1}{2}t^T\Sigma t )\hspace{5pt}\forall t \in \mathbb{R}^n.$$
+where $\mu \in \mathbb{R}^n$ and $\Sigma \in \mathbb{R}^{n \times n}$ is a positive semidefinite matrix.
+\\
+\\
+\textbf{Chi square dist. derived from Multivariate normal}
+Let $Z \sim N(\mu, I_n)$, where $\mu \in \mathbb{R}^n$.
+$$U = Z^T Z = \sum^n_{i=1} Z_i^2 \sim \chi^2_n(\delta)$$ is said to have a non-central $\chi^2$-distribution with n degrees of freedom (d.f.) and non-centrality parameter $\delta = \sqrt{\mu^T\mu}$
+\\
+\\
+\textbf{T Distribution}
+Let X and U be independent random variables with $X \sim N(\delta,1)$ and $U \sim \chi_n^2$. The
+ distribution of
+$$ Y = \frac{X}{\sqrt{\frac{U}{n}}}
+$$
+  is called non-central t-distribution with n degrees of freedom and non-centrality parameter $\delta$. Notation: $Y \sim t_n(\delta), t_n = t_n(0)$.
+\\
+\\
+\textbf{F Distribution}
+If $W_1 \sim \chi^2_{n1} (\delta), W_2 \sim \chi^2_{n2}$ independently then $$F = \frac{W_1/n_1}{W_2 /n_2}$$
+is said to have a non-central F distribution with $(n_1,n_2)$ d.f. and n.c.p.=$\delta$.
+         Notation:$F \sim F_{n1,n2}(\delta),F_{n1,n2} =F_{n1,n2}(0)$.
+
+
+
+
+
+
+\end{document}
